@@ -1,18 +1,26 @@
 import math
+
+
 class Figure:
     def __init__(self, storona_kvadrata=None,
                  radius_kruga=None,
                  storona_romba=None,
                  vysota_romba=None,
-                 d1storona_quadrangle=None,
-                 d2storona_quadrangle=None,
+                 d1_storona_quadrangle=None,
+                 d2_storona_quadrangle=None,
+                 a1_storona_triangle=None,
+                 a2_storona_triangle=None,
+                 a3_storona_triangle=None
                  ):
         self.kvadrat = storona_kvadrata
         self.radius = radius_kruga
         self.lromb = storona_romba
         self.hromb = vysota_romba
-        self.d1quad = d1storona_quadrangle
-        self.d2quad = d2storona_quadrangle
+        self.d1quad = d1_storona_quadrangle
+        self.d2quad = d2_storona_quadrangle
+        self.a1tria = a1_storona_triangle
+        self.a2tria = a2_storona_triangle
+        self.a3tria = a3_storona_triangle
 
 
 class Square(Figure):
@@ -42,6 +50,14 @@ class Rhombus(Figure):
 class Quadrangle(Figure):
     def perimetr(self):
         return f'perimetr: {self.d1quad * self.d2quad}'
+
+    def area(self):
+        return f'ploschad: {self.lromb * self.hromb}'
+
+
+class Triangle(Figure):
+    def perimetr(self):
+        return f'perimetr: {self.a1tria + self.a2tria + self.a3tria}'
 
     def area(self):
         return f'ploschad: {self.lromb * self.hromb}'
