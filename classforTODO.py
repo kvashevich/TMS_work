@@ -33,7 +33,6 @@ class Tasklist:
         out_filter = list(filter(lambda x: task_filter in x, self.taskes))
         return "Result for your request: ", out_filter
 
-
     def erase_task(self):
         name_task = str(input('which task is done? '))
         task = [task for task in self.taskes if task.startswith(name_task)][0]
@@ -52,9 +51,16 @@ class Tasklist:
 
 
 class Save(Tasklist):
-    pass
+    def __init__(self,taskes):
+        super().__init__()
 
-
-
-
-
+    def save_task(self):
+        answer = input('Do you want save new task? ')
+        if answer == "ss":
+            with open('taski.txt', 'w') as file_taskes:
+                filetask = ''
+            for task in self.taskes:
+                filetask += f'{task}\n'
+                file_taskes.write(filetask)
+                print('end.')
+                break

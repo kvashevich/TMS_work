@@ -1,11 +1,4 @@
-from classforTODO import Tasklist
-
-menu = """
-1. Show task     2. Add task     3. Edit task  4. Delete task
-5. Erase task    6. Filter task  7. Mark all done
-
-8. Exit and save taskes
-\n """
+from classforTODO import Tasklist, Save
 
 
 # def exit_end():
@@ -66,6 +59,27 @@ def all_done():
     return task.all_done_task()
 
 
+def save():
+    return task.save_task
+
+
+menu = """
+_____________________________
+|1| Show task                |
+|2| Add task                 |
+|3| Edit task                |
+|4| Delete task              |
+|5| Erase task               |
+|6| Filter task              |
+|7| Mark all done            |
+|8| Save                     |
+| |                          |
+| |                          |
+|____________________________|
+\n """
+
+
+
 menu_list = {
     '1': show,
     '2': add,
@@ -74,6 +88,7 @@ menu_list = {
     '5': erase,
     '6': _filter,
     '7': all_done,
+    '8': save,
 }
 
 task = Tasklist()
