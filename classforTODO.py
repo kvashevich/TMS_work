@@ -1,3 +1,5 @@
+import json
+
 class Tasklist:
     def __init__(self):
         self.taskes = []
@@ -52,8 +54,6 @@ class Tasklist:
 
 class OperationFileTxt(Tasklist):
     def save_task(self):
-        answer = input('Do you want save new task?(y/n) ')
-        if answer == "y":
             with open('taski.txt', 'w') as file_taskes:
                 filetask = ''
                 for task in self.taskes:
@@ -61,8 +61,7 @@ class OperationFileTxt(Tasklist):
                     file_taskes.write(filetask)
                     print('end.')
                     break
-        else:
-            pass
+
 
     def open_task(self):
         if not self.taskes:

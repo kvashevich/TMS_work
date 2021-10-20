@@ -1,18 +1,6 @@
-from classforTODO import OperationFileTxt
+from classforTODO import Tasklist, OperationFileTxt, OperationFileJson
 
-
-# def exit_end():
-#     answer = input('Do you want save new task? ')
-#     if answer == "ss":
-#         with open('taski.txt', 'w') as file_taskes:
-#             filetask = ''
-#         for task in taskes:
-#             filetask += f'{task}\n'
-#             file_taskes.write(filetask)
-#             print('end.')
-#             break
-
-
+# декоратор на повторение функции
 def ask_continue(func):
     def wrapper(*args, **kwargs):
         print(func())
@@ -27,47 +15,62 @@ def ask_continue(func):
 
 
 def show():
+    task = Tasklist()
     return print(task.show_task())
 
 
 @ask_continue
 def add():
+    task = Tasklist()
     return task.add_task()
 
 
 @ask_continue
 def edit():
+    task = Tasklist()
     return task.edit_task()
 
 
 @ask_continue
 def delete():
+    task = Tasklist()
     return task.delete_task()
 
 
 @ask_continue
 def _filter():
+    task = Tasklist()
     return task.filter_task()
 
 
 @ask_continue
 def erase():
+    task = Tasklist()
     return task.erase_task()
 
 
 def all_done():
+    task = Tasklist()
     return task.all_done_task()
 
 
 def save():
-    return task.save_task()
+
+    format = input('Write format\n 1.Txt \n 2.Json')
+
+    if format == '1':
+        a = OperationFileTxt()
+        return a.save_task()
+    elif format == '2':
+        a = OperationFileJson()
+        return a.save_task()
+    return 'task saved'
 
 
 def open():
-    return task.open_task()
+    pass
 
-
-menu = """
+menu =  """
 _____________________________
 |1| Show task                |
 |2| Add task                 |
@@ -77,7 +80,7 @@ _____________________________
 |6| Filter task              |
 |7| Mark all done            |
 |8| Save                     |
-| |                          |
+|9| Open                     |
 | |                          |
 |____________________________|
 \n """
@@ -94,7 +97,7 @@ menu_list = {
     '9': open,
 }
 
-task = OperationFileTxt()
+
 while True:
     print(menu)
     ent = input('Do you want did? ')
