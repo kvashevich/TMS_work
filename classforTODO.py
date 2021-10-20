@@ -52,8 +52,8 @@ class Tasklist:
 
 class OperationFileTxt(Tasklist):
     def save_task(self):
-        answer = input('Do you want save new task? ')
-        if answer == "ss":
+        answer = input('Do you want save new task?(y/n) ')
+        if answer == "y":
             with open('taski.txt', 'w') as file_taskes:
                 filetask = ''
                 for task in self.taskes:
@@ -61,7 +61,26 @@ class OperationFileTxt(Tasklist):
                     file_taskes.write(filetask)
                     print('end.')
                     break
+        else:
+            pass
+
+    def open_task(self):
+        if not self.taskes:
+            with open('taski.txt') as file_task:
+                for task in file_task.readlines():
+                    self.taskes.append(task.strip())
 
 
 class OperationFileJson(OperationFileTxt):
     def save_task(self):
+        answer = input('Do you want save new task?(y/n) ')
+        if answer == "y":
+            with open('taski.json', 'w') as file_taskes:
+                filetask = ''
+                for task in self.taskes:
+                    filetask += f'{task}\n'
+                    file_taskes.write(filetask)
+                    print('end.')
+                    break
+        else:
+            pass

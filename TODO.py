@@ -63,6 +63,10 @@ def save():
     return task.save_task()
 
 
+def open():
+    return task.open_task()
+
+
 menu = """
 _____________________________
 |1| Show task                |
@@ -78,8 +82,6 @@ _____________________________
 |____________________________|
 \n """
 
-
-
 menu_list = {
     '1': show,
     '2': add,
@@ -89,9 +91,10 @@ menu_list = {
     '6': _filter,
     '7': all_done,
     '8': save,
+    '9': open,
 }
 
-task = Save()
+task = OperationFileTxt()
 while True:
     print(menu)
     ent = input('Do you want did? ')
