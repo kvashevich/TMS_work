@@ -50,17 +50,18 @@ class Tasklist:
         return 'task complited'
 
 
-class Save(Tasklist):
-    def __init__(self,taskes):
-        super().__init__()
-
+class OperationFileTxt(Tasklist):
     def save_task(self):
         answer = input('Do you want save new task? ')
         if answer == "ss":
             with open('taski.txt', 'w') as file_taskes:
                 filetask = ''
-            for task in self.taskes:
-                filetask += f'{task}\n'
-                file_taskes.write(filetask)
-                print('end.')
-                break
+                for task in self.taskes:
+                    filetask += f'{task}\n'
+                    file_taskes.write(filetask)
+                    print('end.')
+                    break
+
+
+class OperationFileJson(OperationFileTxt):
+    def save_task(self):

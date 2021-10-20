@@ -1,4 +1,4 @@
-from classforTODO import Tasklist, Save
+from classforTODO import OperationFileTxt
 
 
 # def exit_end():
@@ -60,7 +60,7 @@ def all_done():
 
 
 def save():
-    return task.save_task
+    return task.save_task()
 
 
 menu = """
@@ -91,7 +91,7 @@ menu_list = {
     '8': save,
 }
 
-task = Tasklist()
+task = Save()
 while True:
     print(menu)
     ent = input('Do you want did? ')
